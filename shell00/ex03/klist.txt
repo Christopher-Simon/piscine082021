@@ -1,0 +1,5 @@
+Credentials cache: API:881D411C-BC27-477F-87F2-33FBAC3A7B2C
+        Principal: chsimon@42.FR
+
+  Issued                Expires               Principal
+Aug  2 12:29:58 2021  Aug  9 12:29:58 2021  krbtgt/42.FR@42.FR
