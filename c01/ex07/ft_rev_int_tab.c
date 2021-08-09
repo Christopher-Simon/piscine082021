@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsimon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/07 16:02:06 by chsimon           #+#    #+#             */
-/*   Updated: 2021/08/09 18:44:34 by chsimon          ###   ########.fr       */
+/*   Created: 2021/08/05 20:45:15 by chsimon           #+#    #+#             */
+/*   Updated: 2021/08/06 11:49:44 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_alpha(char *str)
+void	ft_rev_int_tab(int *tab, int size)
 {
 	int	i;
+	int	a;
 
 	i = 0;
-	while (str[i])
+	while (i < (size / 2))
 	{
-		if (str[i] < 65 || (str[i] > 90 && str[i] < 97) || str[i] > 122)
-			return (0);
+		a = tab[size -(1 + i)];
+		tab[size - (1 + i)] = tab[i];
+		tab[i] = a;
 		i++;
 	}
-	return (1);
 }

@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_is_negative.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsimon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/07 16:02:06 by chsimon           #+#    #+#             */
-/*   Updated: 2021/08/09 18:44:34 by chsimon          ###   ########.fr       */
+/*   Created: 2021/08/04 12:47:25 by chsimon           #+#    #+#             */
+/*   Updated: 2021/08/05 11:37:15 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_alpha(char *str)
-{
-	int	i;
+#include <unistd.h>
 
-	i = 0;
-	while (str[i])
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_is_negative(int n)
+{
+	if (n < 0)
 	{
-		if (str[i] < 65 || (str[i] > 90 && str[i] < 97) || str[i] > 122)
-			return (0);
-		i++;
+		ft_putchar('N');
 	}
-	return (1);
+	else
+	{
+		ft_putchar('P');
+	}
 }

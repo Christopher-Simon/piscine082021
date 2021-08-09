@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsimon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/07 16:02:06 by chsimon           #+#    #+#             */
-/*   Updated: 2021/08/09 18:44:34 by chsimon          ###   ########.fr       */
+/*   Created: 2021/08/05 09:29:52 by chsimon           #+#    #+#             */
+/*   Updated: 2021/08/05 11:49:58 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_alpha(char *str)
-{
-	int	i;
+#include <unistd.h>
 
-	i = 0;
-	while (str[i])
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int nb)
+{
+	if (nb == -2147483648)
 	{
-		if (str[i] < 65 || (str[i] > 90 && str[i] < 97) || str[i] > 122)
-			return (0);
-		i++;
+		write(1, "-2147483648", 11);
+		return ;
 	}
-	return (1);
+	if (nb < 0)
+	{
+		nb *= -1;
+		ft_putchar('-');
+	}
+	if (nb >= 10)
+	{
+		ft_putnbr(nb / 10);
+	}	
+	ft_putchar(nb % 10 + 48);
 }

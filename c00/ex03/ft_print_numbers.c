@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsimon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/07 16:02:06 by chsimon           #+#    #+#             */
-/*   Updated: 2021/08/09 18:44:34 by chsimon          ###   ########.fr       */
+/*   Created: 2021/08/04 12:31:47 by chsimon           #+#    #+#             */
+/*   Updated: 2021/08/04 12:45:26 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_alpha(char *str)
+#include <unistd.h>
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_print_numbers(void)
 {
 	int	i;
 
-	i = 0;
-	while (str[i])
+	i = '0';
+	while (i <= '9')
 	{
-		if (str[i] < 65 || (str[i] > 90 && str[i] < 97) || str[i] > 122)
-			return (0);
+		ft_putchar(i);
 		i++;
 	}
-	return (1);
 }

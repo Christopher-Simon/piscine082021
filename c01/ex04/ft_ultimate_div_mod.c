@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_ultimate_div_mod.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsimon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/07 16:02:06 by chsimon           #+#    #+#             */
-/*   Updated: 2021/08/09 18:44:34 by chsimon          ###   ########.fr       */
+/*   Created: 2021/08/05 18:40:07 by chsimon           #+#    #+#             */
+/*   Updated: 2021/08/06 11:45:00 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_alpha(char *str)
+void	ft_ultimate_div_mod(int *a, int *b)
 {
-	int	i;
+	int	y;
+	int	z;
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] < 65 || (str[i] > 90 && str[i] < 97) || str[i] > 122)
-			return (0);
-		i++;
-	}
-	return (1);
+	y = *a / *b;
+	z = *a % *b;
+	*a = y;
+	*b = z;
 }
