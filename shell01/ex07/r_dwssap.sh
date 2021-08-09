@@ -1,3 +1,1 @@
-#!/bin/sh
-cat /etc/passwd | grep -v '#' | cut -d : -f 1 |  sed -n 'n;p' | rev | sort -r | sed -n "${FT_LINE1}${FT_LINE2}p" | tr "\n" "," | sed "s/,/ /" | sed "s/,/, /g" | tr -d '\n'
-
+cat /etc/passwd | sed '/^#/d'| awk -F ':' '{print $1}' | awk '{if (NR%2==0) {print $0}}' | rev | sort -r | sed -n "${FT_LINE1}${FT_LINE2}p" | tr '\n' ',' | sed -e 's/,/, /g' -e 's/, $/./' | tr -d '\n'
