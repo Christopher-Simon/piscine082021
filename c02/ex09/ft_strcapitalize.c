@@ -6,46 +6,60 @@
 /*   By: chsimon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 18:36:08 by chsimon           #+#    #+#             */
-/*   Updated: 2021/08/09 13:24:29 by chsimon          ###   ########.fr       */
+/*   Updated: 2021/08/10 11:51:38 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_alphanum(char c)
+#include <stdio.h>
+
+int	alphanum(char c)
 {
+	if (c >= 'a' && c <= 'z')
+		return (1);
+	if (c >= 'A' && c <= 'Z')
+		return (1);
 	if (c >= '0' && c <= '9')
-		return (1);
-	else if (c >= 'a' && c <= 'z')
-		return (1);
-	else if (c >= 'A' && c <= 'Z')
 		return (1);
 	return (0);
 }
 
-int	is_alpha(char c)
+void	flag_behaviour(int flag, char *ptr)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-		return (1);
-	return (0);
+	while (*ptr)
+	{
+		if (flag == 1)
+		{
+			if (*ptr >= 'A' && *ptr <= 'Z')
+				*ptr += 32;
+			if (alphanum(*ptr) == 0)
+				flag--;
+		}
+		if (flag == 0)
+		{
+			if (*(ptr) >= 'a' && 'z' >= (*ptr))
+				*ptr -= 32;
+			if (alphanum(*ptr) == 1)
+				flag++;
+		}
+		ptr++;
+	}
 }
 
 char	*ft_strcapitalize(char *str)
 {
-	int	i;
+	char	*ptr;
+	int		flag;
 
-	i = 0;
-	if (str[i] >= 'a' && str[i] <= 'z')
-		str[i] -= 32;
-	i++;
-	while (str[i])
+	ptr = str;
+	if (alphanum(*ptr) == 1)
 	{
-		if (is_alpha(str[i]) == 1)
-		{
-			if (is_alphanum(str[i - 1]) == 0)
-				str[i] -= 32;
-		}
-		if ((str[i] >= 'A' && str[i] <= 'Z') && is_alphanum(str[i - 1]) == 1)
-			str[i] += 32;
-		i ++;
+		flag = 1;
+		if ((*(ptr) >= 'a') && (*(ptr) <= 'z'))
+			*ptr -= 32;
 	}
+	else
+		flag = 0;
+	ptr++;
+	flag_behaviour(flag, ptr);
 	return (str);
 }
