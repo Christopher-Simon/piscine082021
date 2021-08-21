@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsimon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/08 18:31:48 by chsimon           #+#    #+#             */
-/*   Updated: 2021/08/15 19:14:12 by chsimon          ###   ########.fr       */
+/*   Created: 2021/08/12 10:38:59 by chsimon           #+#    #+#             */
+/*   Updated: 2021/08/17 12:08:50 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
+#include <unistd.h>
+
+void	ft_putstr(char *str)
+{
+	while (*str)
+	{
+		write(1, str, 1);
+		str++;
+	}
+	write(1, "\n", 1);
+}
+
+int	main(int argc, char	**argv)
 {
 	int	i;
 
-	if (to_find[0] == '\0')
-		return (str);
-	while (*str)
-	{
-		i = 0;
-		while (str[i] == to_find[i])
-		{
-			if (to_find[i + 1] == '\0')
-				return (str);
-			i++;
-		}
-		str++;
-	}
-	return (0);
+	(void)argc;
+	i = 1;
+	while (argv[i])
+		ft_putstr(argv[i++]);
 }

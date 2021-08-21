@@ -1,31 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsimon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/08 18:31:48 by chsimon           #+#    #+#             */
-/*   Updated: 2021/08/15 19:14:12 by chsimon          ###   ########.fr       */
+/*   Created: 2021/08/10 12:12:21 by chsimon           #+#    #+#             */
+/*   Updated: 2021/08/15 20:28:12 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
-{
-	int	i;
+#include <unistd.h>
 
-	if (to_find[0] == '\0')
-		return (str);
-	while (*str)
+void	ft_putchar(char c )
+{
+	write(1, &c, 1);
+}
+
+void	ascii_converter(int nb)
+{
+	int	div;
+	int	mod;
+
+	div = nb / 10;
+	mod = nb % 10;
+	if (div != 0)
+		ascii_converter(div);
+	ft_putchar(mod + 48);
+}
+
+void	ft_putnbr(int nb)
+{
+	if (nb == -2147483648)
 	{
-		i = 0;
-		while (str[i] == to_find[i])
-		{
-			if (to_find[i + 1] == '\0')
-				return (str);
-			i++;
-		}
-		str++;
+		write(1, "-2147483648", 11);
+		return ;
 	}
-	return (0);
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb *= -1;
+	}
+	ascii_converter(nb);
 }

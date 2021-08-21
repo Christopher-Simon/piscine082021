@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsimon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/08 18:31:48 by chsimon           #+#    #+#             */
-/*   Updated: 2021/08/15 19:14:12 by chsimon          ###   ########.fr       */
+/*   Created: 2021/08/16 14:09:52 by chsimon           #+#    #+#             */
+/*   Updated: 2021/08/18 19:14:49 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
-{
-	int	i;
+int	ft_sqrt(int nb)
+{	
+	unsigned int	n;
+	unsigned int	i;
+	unsigned int	r;
 
-	if (to_find[0] == '\0')
-		return (str);
-	while (*str)
+	n = nb;
+	i = 0;
+	r = 0;
+	while (r < n && i < 46340)
 	{
-		i = 0;
-		while (str[i] == to_find[i])
-		{
-			if (to_find[i + 1] == '\0')
-				return (str);
-			i++;
-		}
-		str++;
+		i++;
+		r = i * i;
 	}
-	return (0);
+	if (r == n)
+		return (i);
+	else
+		return (0);
 }

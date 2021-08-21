@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsimon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/08 18:31:48 by chsimon           #+#    #+#             */
-/*   Updated: 2021/08/15 19:14:12 by chsimon          ###   ########.fr       */
+/*   Created: 2021/08/10 12:40:08 by chsimon           #+#    #+#             */
+/*   Updated: 2021/08/15 20:30:12 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
+int	ft_atoi(char *str)
 {
 	int	i;
+	int	d;
+	int	a;
 
-	if (to_find[0] == '\0')
-		return (str);
-	while (*str)
+	d = 0;
+	i = 0;
+	a = 0;
+	while (*str == '\t' || *str == '\n' || *str == '\r'
+		|| *str == '\v' || *str == ' ' || *str == '\f')
+		str++;
+	while (*str == '-' || *str == '+')
 	{
-		i = 0;
-		while (str[i] == to_find[i])
-		{
-			if (to_find[i + 1] == '\0')
-				return (str);
+		if (*str == '-')
 			i++;
-		}
 		str++;
 	}
-	return (0);
+	while (*str >= '0' && *str <= '9')
+		a = 10 * a + (*(str++) - '0');
+	if (i % 2 != 0)
+		a *= -1;
+	return (a);
 }

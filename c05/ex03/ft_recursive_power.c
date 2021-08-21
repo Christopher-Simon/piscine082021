@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_recursive_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsimon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/08 18:31:48 by chsimon           #+#    #+#             */
-/*   Updated: 2021/08/15 19:14:12 by chsimon          ###   ########.fr       */
+/*   Created: 2021/08/16 12:14:46 by chsimon           #+#    #+#             */
+/*   Updated: 2021/08/18 20:08:56 by chsimon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
+int	ft_recursive_power(int nb, int power)
 {
-	int	i;
-
-	if (to_find[0] == '\0')
-		return (str);
-	while (*str)
-	{
-		i = 0;
-		while (str[i] == to_find[i])
-		{
-			if (to_find[i + 1] == '\0')
-				return (str);
-			i++;
-		}
-		str++;
-	}
-	return (0);
+	if (power < 0)
+		return (0);
+	if (power == 0)
+		return (1);
+	else
+		if (--power > 0)
+			nb *= ft_recursive_power(nb, power);
+	return (nb);
 }
